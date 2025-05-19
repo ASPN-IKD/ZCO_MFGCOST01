@@ -291,8 +291,15 @@ sap.ui.define([
                     hAlign: sap.ui.core.HorizontalAlign.Center
                 }));
 
-                // Text 생성
-                _oProfitField.getProperty("/").forEach(element => {
+                var vOrgPeriod = this.byId("fbPeriod").getValue();
+                var vYear = vOrgPeriod.substring(0,4);
+
+                var arrayProfitField = _oProfitField.getProperty("/").filter(function(oItem) {
+                    return ((oItem.Enddate.toISOString().substring(0,4) >= vYear));
+                });
+
+                arrayProfitField.forEach(element => {
+                    var fieldkey = 'Field' + element.Nodeid.padStart(3, "0");
    
                     var vHBox = new sap.m.HBox({
                         justifyContent: sap.m.FlexJustifyContent.End
@@ -301,7 +308,7 @@ sap.ui.define([
                     var oText = new sap.m.Text({
                         text: {
                             parts: [ 
-                                {path: element.Fieldkey},
+                                {path: fieldkey},
                                 {path: 'fieldCur'},
                             ],
                             type: new sap.ui.model.type.Currency({
