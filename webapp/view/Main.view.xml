@@ -1,0 +1,119 @@
+<mvc:View controllerName="zcomfgcost01.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:table="sap.ui.table">
+
+    <Page id="page" title="{i18n>title}" showHeader="false" class="sapUiContentPadding">
+        <content>                
+            <fb:FilterBar id="iFilterBar" reset="onReset" search="onSearch()" showRestoreButton="true" useToolbar="false">
+                
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem groupName="__$INTERNAL$" name="Ledger" label="{i18n>fbLedger}" labelTooltip="{i18n>fbLedger}" visibleInFilterBar="true" mandatory="true">
+						<fb:control>
+                            <Select id="fbLedger" 
+                                showSecondaryValues="true"
+                                items="{path: 'oLedger>/'}"
+                                selectedKey="{oLedger>/Ledger}">
+                                <core:Item key="{oLedger>Ledger}" text="{oLedger>Ledger} ({oLedger>LedgerName})" />
+                            </Select>
+                        </fb:control> 
+					</fb:FilterGroupItem>
+                       
+                    <fb:FilterGroupItem groupName="__$INTERNAL$" name="Company" label="{i18n>fbCompany}" labelTooltip="{i18n>fbCompany}" visibleInFilterBar="true" mandatory="true">
+                        <fb:control>
+                            <Select id="fbCompany" 
+                                showSecondaryValues="true"
+                                items="{path: 'oCompany>/'}"
+                                selectedKey="{oCompany>/CompanyCode}">
+                                <core:Item key="{oCompany>CompanyCode}" text="{oCompany>CompanyCode} ({oCompany>CompanyCodeName})" />
+                            </Select>
+                        </fb:control>                        
+                    </fb:FilterGroupItem>
+
+                    <fb:FilterGroupItem groupName="__$INTERNAL$" name="Plant" label="{i18n>fbPlant}" labelTooltip="{i18n>fbPlant}" visibleInFilterBar="true" mandatory="true">
+                        <fb:control>
+                            <Select id="fbPlant" 
+                                showSecondaryValues="true"
+                                items="{path: 'oPlant>/'}"
+                                selectedKey="{oPlant>/Plant}">
+                                <core:Item key="{oPlant>Plant}" text="{oPlant>Plant} ({oPlant>PlantName})" />
+                            </Select>
+                        </fb:control>                        
+                    </fb:FilterGroupItem>                    
+
+                    <fb:FilterGroupItem groupName="__$INTERNAL$" name="Period" label="{i18n>fbPeriod}" labelTooltip="{i18n>fbPeriod}" visibleInFilterBar="true" mandatory="true">
+                        <fb:control>
+                          	<DatePicker
+                                id="fbPeriod"
+                                value="{
+                                    'path':'/Period',
+                                    'type':'sap.ui.model.type.Date',
+                                    'formatOptions': {
+                                        'pattern': 'y-0MM'
+                                    }
+                                }"
+                                showCurrentDateButton="true"
+                                change = "setColumn"/>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem groupName="__$INTERNAL$" name="SelType" label="{i18n>fbSelType}" labelTooltip="{i18n>fbSelType}" visibleInFilterBar="true" mandatory="true">
+                        <fb:control>
+                            <RadioButtonGroup id="SelGroup" columns = "2" select="onChangeSelType">  
+                                <RadioButton text="전체 조회" selected="true" />
+                                <RadioButton text="사업부별 조회" />
+                            </RadioButtonGroup>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+ 
+            <table:TreeTable
+                id="iACTUALCOST"
+                selectionMode="None"
+                visibleRowCount="20"
+                fixedColumnCount="2"
+                enableColumnReordering="false"
+                enableBusyIndicator="true"
+                cellClick="onNavigateToStandard"
+                >
+
+               <table:extension>
+                   <Toolbar>
+                        <ToolbarSpacer></ToolbarSpacer>                   
+                       <Button icon="sap-icon://excel-attachment" text="{i18n>BTN_EXCEL_DOWN}" visible="true" tooltip="Excel export" press="excelExport"/>
+                   </Toolbar>
+               </table:extension>
+               <table:columns>
+                    <table:Column width="300px" hAlign="Center">
+                        <Label text="{i18n>title1}"/>
+                        <table:template>
+                            <HBox justifyContent="Start">
+                                <Text text="{Description}" wrapping="false" />
+                            </HBox>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="150px" hAlign="Center">
+                        <Label text="{i18n>title2}" />
+                        <table:template>
+                             <HBox justifyContent="End">
+			                    <Text text="{
+                                    parts: [ {path: 'total'},
+                                            {path: 'fieldCur'}
+                                        ],
+                                    type: 'sap.ui.model.type.Currency',
+                                    formatter: '.formatterCurrency'
+                                }"/>
+                            </HBox>
+                        </table:template>
+                    </table:Column>
+
+                </table:columns>
+
+            </table:TreeTable> 
+        </content>
+    </Page>
+</mvc:View>

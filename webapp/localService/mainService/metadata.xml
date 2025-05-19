@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zaspn_cbo_test_0001" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="CompanyType" sap:label="Company Code" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="25" sap:label="City"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="ChartOfAccounts" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Chart of Accounts"/>
+                <Property Name="FiscalYearVariant" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Fiscal Year Variant"/>
+                <Property Name="Company" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Company"/>
+                <Property Name="CreditControlArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Credit Control Area"/>
+                <Property Name="CountryChartOfAccounts" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Alternative Chart of Accounts" sap:quickinfo="Alternative Chart of Accounts for Country/Region"/>
+                <Property Name="FinancialManagementArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="FM Area" sap:quickinfo="Financial Management Area"/>
+            </EntityType>
+            <EntityType Name="GLAccountType" sap:label="G/L Account In Chart Of Accounts" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ChartOfAccounts"/>
+                    <PropertyRef Name="GLAccount"/>
+                </Key>
+                <Property Name="ChartOfAccounts" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Chart of Accounts"/>
+                <Property Name="GLAccount" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="GLAccount_Text" sap:label="G/L Account" sap:quickinfo="G/L Account Number"/>
+                <Property Name="GLAccount_Text" Type="Edm.String" MaxLength="20" sap:label="G/L Account Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GLAccountExternal" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="G/L Acct External ID" sap:quickinfo="G/L Account Number"/>
+            </EntityType>
+            <EntityType Name="PlantType" sap:label="Plant by Name" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="PlantName" sap:label="Plant"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Plant Name"/>
+            </EntityType>
+            <EntityType Name="ZCBO_TEST_CO_0001Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_Ledger"/>
+                    <PropertyRef Name="P_Companycode"/>
+                    <PropertyRef Name="P_FiscalYearPeriod"/>
+                    <PropertyRef Name="P_Plant"/>
+                    <PropertyRef Name="P_Type"/>
+                    <PropertyRef Name="Orderby"/>
+                </Key>
+                <Property Name="P_Ledger" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Component of the Version Number"/>
+                <Property Name="P_Companycode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Undefined range (can be used for patch levels)"/>
+                <Property Name="P_FiscalYearPeriod" Type="Edm.String" Nullable="false" MaxLength="7" sap:display-format="UpperCase" sap:label="Character field, length 7"/>
+                <Property Name="P_Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Undefined range (can be used for patch levels)"/>
+                <Property Name="P_Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag"/>
+                <Property Name="Orderby" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative"/>
+                <Property Name="NodeID" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative"/>
+                <Property Name="HierarchyLevel" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ParentNodeID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DrillState" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="100"/>
+                <Property Name="moveyn" Type="Edm.String" MaxLength="1"/>
+                <Property Name="movegl" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="total" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="jan" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="feb" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="mar" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="apr" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="may" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="jun" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="jul" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="aug" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="sep" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="oct" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="nov" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="dece" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="fieldCur" sap:variable-scale="true"/>
+                <Property Name="fieldCur" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
+                <Property Name="return_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="return_msg" Type="Edm.String" MaxLength="1000"/>
+                <NavigationProperty Name="Parameters" Relationship="cds_zaspn_cbo_test_0001.assoc_BC81CFE649DC2D696F334B88BA110E05" FromRole="ToRole_assoc_BC81CFE649DC2D696F334B88BA110E05" ToRole="FromRole_assoc_BC81CFE649DC2D696F334B88BA110E05" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCBO_TEST_CO_0001Parameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_Ledger"/>
+                    <PropertyRef Name="P_Companycode"/>
+                    <PropertyRef Name="P_FiscalYearPeriod"/>
+                    <PropertyRef Name="P_Plant"/>
+                    <PropertyRef Name="P_Type"/>
+                </Key>
+                <Property Name="P_Ledger" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Component of the Version Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="P_Companycode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Undefined range (can be used for patch levels)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="P_FiscalYearPeriod" Type="Edm.String" Nullable="false" MaxLength="7" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Character field, length 7" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="P_Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Undefined range (can be used for patch levels)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="P_Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="cds_zaspn_cbo_test_0001.assoc_BC81CFE649DC2D696F334B88BA110E05" FromRole="FromRole_assoc_BC81CFE649DC2D696F334B88BA110E05" ToRole="ToRole_assoc_BC81CFE649DC2D696F334B88BA110E05"/>
+            </EntityType>
+            <EntityType Name="LedgerType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Ledger"/>
+                </Key>
+                <Property Name="Ledger" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Ledger" sap:quickinfo="Ledger in General Ledger Accounting"/>
+                <Property Name="IsLeadingLedger" Type="Edm.Boolean" sap:label="Leading Ledger" sap:quickinfo="Indicator: Leading Ledger"/>
+                <Property Name="LedgerName" Type="Edm.String" MaxLength="30" sap:label="Ledger Name"/>
+            </EntityType>
+            <Association Name="assoc_BC81CFE649DC2D696F334B88BA110E05" sap:content-version="1">
+                <End Type="cds_zaspn_cbo_test_0001.ZCBO_TEST_CO_0001Parameters" Multiplicity="1" Role="FromRole_assoc_BC81CFE649DC2D696F334B88BA110E05"/>
+                <End Type="cds_zaspn_cbo_test_0001.ZCBO_TEST_CO_0001Type" Multiplicity="*" Role="ToRole_assoc_BC81CFE649DC2D696F334B88BA110E05"/>
+            </Association>
+            <EntityContainer Name="cds_zaspn_cbo_test_0001_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Company" EntityType="cds_zaspn_cbo_test_0001.CompanyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="GLAccount" EntityType="cds_zaspn_cbo_test_0001.GLAccountType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Plant" EntityType="cds_zaspn_cbo_test_0001.PlantType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZCBO_TEST_CO_0001Set" EntityType="cds_zaspn_cbo_test_0001.ZCBO_TEST_CO_0001Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCBO_TEST_CO_0001" EntityType="cds_zaspn_cbo_test_0001.ZCBO_TEST_CO_0001Parameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Ledger" EntityType="cds_zaspn_cbo_test_0001.LedgerType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_BC81CFE649DC2D696F334B88BA110E05" Association="cds_zaspn_cbo_test_0001.assoc_BC81CFE649DC2D696F334B88BA110E05" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCBO_TEST_CO_0001" Role="FromRole_assoc_BC81CFE649DC2D696F334B88BA110E05"/>
+                    <End EntitySet="ZCBO_TEST_CO_0001Set" Role="ToRole_assoc_BC81CFE649DC2D696F334B88BA110E05"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zaspn_cbo_test_0001.cds_zaspn_cbo_test_0001_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zaspn_cbo_test_0001.cds_zaspn_cbo_test_0001_Entities/Company" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zaspn_cbo_test_0001.cds_zaspn_cbo_test_0001_Entities/GLAccount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zaspn_cbo_test_0001.cds_zaspn_cbo_test_0001_Entities/Ledger" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zaspn_cbo_test_0001.cds_zaspn_cbo_test_0001_Entities/Plant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zaspn_cbo_test_0001.cds_zaspn_cbo_test_0001_Entities/ZCBO_TEST_CO_0001Set" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="movegl"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="return_msg"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>movegl</PropertyPath>
+                                <PropertyPath>return_msg</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zaspn_cbo_test_0001.cds_zaspn_cbo_test_0001_Entities/ZCBO_TEST_CO_0001" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_Ledger</PropertyPath>
+                                <PropertyPath>P_Companycode</PropertyPath>
+                                <PropertyPath>P_FiscalYearPeriod</PropertyPath>
+                                <PropertyPath>P_Plant</PropertyPath>
+                                <PropertyPath>P_Type</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_Ledger</PropertyPath>
+                                <PropertyPath>P_Companycode</PropertyPath>
+                                <PropertyPath>P_FiscalYearPeriod</PropertyPath>
+                                <PropertyPath>P_Plant</PropertyPath>
+                                <PropertyPath>P_Type</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zaspn_cbo_test_0001.cds_zaspn_cbo_test_0001_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/sap/ZASPN_CBO_O2_0002/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my407000-api.s4hana.cloud.sap/sap/opu/odata/sap/ZASPN_CBO_O2_0002/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

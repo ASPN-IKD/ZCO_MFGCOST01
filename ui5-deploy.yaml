@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: zcomfgcost01
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: ZAM_DEV_SAML_ASSERTION
+          url: https://my407000.s4hana.cloud.sap
+        app:
+          name: ZCO_MFGCOST01
+          package: ZCBO_TEST_0001
+          transport: ZAMK900819
+        exclude:
+          - /test/
